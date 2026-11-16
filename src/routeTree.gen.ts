@@ -10,33 +10,80 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as CancelIdRouteImport } from './routes/cancel.$id'
+import { Route as CategorySlugRouteImport } from './routes/category.$slug'
+import { Route as ToolsCalculatorRouteImport } from './routes/tools/calculator'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CancelIdRoute = CancelIdRouteImport.update({
+  id: '/cancel/$id',
+  path: '/cancel/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CategorySlugRoute = CategorySlugRouteImport.update({
+  id: '/category/$slug',
+  path: '/category/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsCalculatorRoute = ToolsCalculatorRouteImport.update({
+  id: '/tools/calculator',
+  path: '/tools/calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/cancel/$id': typeof CancelIdRoute
+  '/category/$slug': typeof CategorySlugRoute
+  '/tools/calculator': typeof ToolsCalculatorRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/cancel/$id': typeof CancelIdRoute
+  '/category/$slug': typeof CategorySlugRoute
+  '/tools/calculator': typeof ToolsCalculatorRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/cancel/$id': typeof CancelIdRoute
+  '/category/$slug': typeof CategorySlugRoute
+  '/tools/calculator': typeof ToolsCalculatorRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/about' | '/cancel/$id' | '/category/$slug' | '/tools/calculator'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/about' | '/cancel/$id' | '/category/$slug' | '/tools/calculator'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/cancel/$id'
+    | '/category/$slug'
+    | '/tools/calculator'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  CancelIdRoute: typeof CancelIdRoute
+  CategorySlugRoute: typeof CategorySlugRoute
+  ToolsCalculatorRoute: typeof ToolsCalculatorRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +95,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cancel/$id': {
+      id: '/cancel/$id'
+      path: '/cancel/$id'
+      fullPath: '/cancel/$id'
+      preLoaderRoute: typeof CancelIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/category/$slug': {
+      id: '/category/$slug'
+      path: '/category/$slug'
+      fullPath: '/category/$slug'
+      preLoaderRoute: typeof CategorySlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/calculator': {
+      id: '/tools/calculator'
+      path: '/tools/calculator'
+      fullPath: '/tools/calculator'
+      preLoaderRoute: typeof ToolsCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  CancelIdRoute: CancelIdRoute,
+  CategorySlugRoute: CategorySlugRoute,
+  ToolsCalculatorRoute: ToolsCalculatorRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

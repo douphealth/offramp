@@ -28,3 +28,6 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- Guide content lives in `src/data/services.json` and is read only through `src/lib/services.ts`; pages are data-driven so adding a service needs no new route.
