@@ -1,4 +1,5 @@
 # Offramp review roadmap
+- [x] Redesign homepage with custom imagery, interactive visual details, and desktop/mobile search verification.
 - [x] Correct coverage, editorial-status, region and card claims.
 - [x] Add billing-aware destinations, receipt guidance and confirmation evidence.
 - [x] Add private issue/service requests and optional outcome feedback; verified saved rows through Cloud.

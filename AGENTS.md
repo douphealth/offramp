@@ -38,3 +38,4 @@ use the editor.
 - Keep bookmarks device-local and treat them as untrusted optional storage; no visitor accounts are needed for public guides.
 - Journey measurement is opt-in and separate from explicitly submitted feedback, so browsing remains untracked by default.
 - Generate the sitemap from catalogue records and the request origin; defer production canonicals until the owner chooses the canonical domain.
+- Scope homepage visual treatments under `.homepage` and keep decorative pointer motion CSS-driven with reduced-motion overrides so guide layouts and accessibility remain stable.
