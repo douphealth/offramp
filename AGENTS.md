@@ -31,3 +31,10 @@ use the editor.
 
 ## Project rules
 - Guide content lives in `src/data/services.json` and is read only through `src/lib/services.ts`; pages are data-driven so adding a service needs no new route.
+- Keep billing matching, review expiry, scope and catalogue filtering in `src/lib/services.ts` so all pages share the same safety rules.
+- Keep imported editorial reviews distinct from automated URL/source checks; automated monitoring writes alerts only, never published instructions.
+- Accept public feedback only through validated, same-origin, rate-limited server functions; submissions, source hashes and editorial queues are service-role-only, while nonpersonal evidence summaries are public.
+- Run evidence monitoring through the managed authenticated cron route with bounded batches; third-party failures create human review tasks rather than verified-content claims.
+- Keep bookmarks device-local and treat them as untrusted optional storage; no visitor accounts are needed for public guides.
+- Journey measurement is opt-in and separate from explicitly submitted feedback, so browsing remains untracked by default.
+- Generate the sitemap from catalogue records and the request origin; defer production canonicals until the owner chooses the canonical domain.

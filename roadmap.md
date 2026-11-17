@@ -1,0 +1,13 @@
+# Offramp review roadmap
+- [x] Correct coverage, editorial-status, region and card claims.
+- [x] Add billing-aware destinations, receipt guidance and confirmation evidence.
+- [x] Add private issue/service requests and optional outcome feedback; verified saved rows through Cloud.
+- [x] Add scheduled link/source monitoring, review queue, human approval boundary and recovery documentation; authenticated local run succeeded, public calls rejected.
+- [x] Polish search, mobile navigation, focus and reduced motion; remove duplicate ticker.
+- [x] Test calculator, search, filters, saved items, billing and public submissions; 21 tests pass, desktop/mobile journeys pass.
+- [x] Add sitemap, health endpoint, unique content metadata and launch-gate documentation.
+- [x] Verify mobile wrapping, readable steps, private-table anonymous read restrictions, and nonpersonal public evidence.
+- [ ] Launch accountability: publisher legal identity, direct contact, named editorial owners and feedback retention policy require owner-supplied information.
+- [ ] Complete independent claim-by-claim editorial reviews and richer contract-specific instructions: requires real reviewers and official-source research; imported content remains explicitly unverified.
+- [ ] Hosted launch verification: custom domain/canonical origin, first published scheduled run, external uptime monitor and real mobile performance require publication/domain decisions.
+- [ ] Operational recovery rehearsal: requires an approved private backup and restore target; procedure documented, production restore not attempted.

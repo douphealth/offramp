@@ -11,9 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as CancelIdRouteImport } from './routes/cancel.$id'
 import { Route as CategorySlugRouteImport } from './routes/category.$slug'
 import { Route as ToolsCalculatorRouteImport } from './routes/tools/calculator'
+import { Route as ApiPublicCheckEvidenceRouteImport } from './routes/api/public/check-evidence'
+import { Route as ApiPublicHealthRouteImport } from './routes/api/public/health'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -23,6 +27,16 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CancelIdRoute = CancelIdRouteImport.update({
@@ -40,50 +54,97 @@ const ToolsCalculatorRoute = ToolsCalculatorRouteImport.update({
   path: '/tools/calculator',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicCheckEvidenceRoute = ApiPublicCheckEvidenceRouteImport.update({
+  id: '/api/public/check-evidence',
+  path: '/api/public/check-evidence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicHealthRoute = ApiPublicHealthRouteImport.update({
+  id: '/api/public/health',
+  path: '/api/public/health',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/privacy': typeof PrivacyRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/cancel/$id': typeof CancelIdRoute
   '/category/$slug': typeof CategorySlugRoute
   '/tools/calculator': typeof ToolsCalculatorRoute
+  '/api/public/check-evidence': typeof ApiPublicCheckEvidenceRoute
+  '/api/public/health': typeof ApiPublicHealthRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/privacy': typeof PrivacyRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/cancel/$id': typeof CancelIdRoute
   '/category/$slug': typeof CategorySlugRoute
   '/tools/calculator': typeof ToolsCalculatorRoute
+  '/api/public/check-evidence': typeof ApiPublicCheckEvidenceRoute
+  '/api/public/health': typeof ApiPublicHealthRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/privacy': typeof PrivacyRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/cancel/$id': typeof CancelIdRoute
   '/category/$slug': typeof CategorySlugRoute
   '/tools/calculator': typeof ToolsCalculatorRoute
+  '/api/public/check-evidence': typeof ApiPublicCheckEvidenceRoute
+  '/api/public/health': typeof ApiPublicHealthRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/about' | '/cancel/$id' | '/category/$slug' | '/tools/calculator'
+    | '/'
+    | '/about'
+    | '/privacy'
+    | '/sitemap.xml'
+    | '/cancel/$id'
+    | '/category/$slug'
+    | '/tools/calculator'
+    | '/api/public/check-evidence'
+    | '/api/public/health'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/cancel/$id' | '/category/$slug' | '/tools/calculator'
+  to:
+    | '/'
+    | '/about'
+    | '/privacy'
+    | '/sitemap.xml'
+    | '/cancel/$id'
+    | '/category/$slug'
+    | '/tools/calculator'
+    | '/api/public/check-evidence'
+    | '/api/public/health'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/privacy'
+    | '/sitemap.xml'
     | '/cancel/$id'
     | '/category/$slug'
     | '/tools/calculator'
+    | '/api/public/check-evidence'
+    | '/api/public/health'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  PrivacyRoute: typeof PrivacyRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   CancelIdRoute: typeof CancelIdRoute
   CategorySlugRoute: typeof CategorySlugRoute
   ToolsCalculatorRoute: typeof ToolsCalculatorRoute
+  ApiPublicCheckEvidenceRoute: typeof ApiPublicCheckEvidenceRoute
+  ApiPublicHealthRoute: typeof ApiPublicHealthRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -100,6 +161,20 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cancel/$id': {
@@ -123,15 +198,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToolsCalculatorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/check-evidence': {
+      id: '/api/public/check-evidence'
+      path: '/api/public/check-evidence'
+      fullPath: '/api/public/check-evidence'
+      preLoaderRoute: typeof ApiPublicCheckEvidenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/health': {
+      id: '/api/public/health'
+      path: '/api/public/health'
+      fullPath: '/api/public/health'
+      preLoaderRoute: typeof ApiPublicHealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  PrivacyRoute: PrivacyRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   CancelIdRoute: CancelIdRoute,
   CategorySlugRoute: CategorySlugRoute,
   ToolsCalculatorRoute: ToolsCalculatorRoute,
+  ApiPublicCheckEvidenceRoute: ApiPublicCheckEvidenceRoute,
+  ApiPublicHealthRoute: ApiPublicHealthRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
